@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>TweetPHP | logmancuso.github.io</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="TweetPHP" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/HTML/php/tweet-php/" />
+<meta property="og:url" content="http://localhost:4000/HTML/php/tweet-php/" />
+<meta property="og:site_name" content="logmancuso.github.io" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/HTML/php/tweet-php/","headline":"TweetPHP","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4aefe5d3cdd73f75370bddf8afaa5ce4b4744d63">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">logmancuso.github.io</a></h1>
+      
+
+      <h1 id="tweetphp">TweetPHP</h1>
+
+<p>A PHP class for fetching tweets from a Twitter user’s timeline, and rendering them as an HTML list.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Works with Twitter API v1.1</li>
+  <li>Tweets are cached to avoid exceeding Twitter’s API request rate limits</li>
+  <li>A fallback is provided in case the twitter feed fails to load</li>
+  <li>Retweets and @replies can optionally be ignored</li>
+  <li>A configuration parameter allows you to specify how many tweets are displayed</li>
+  <li>Dates can optionally be displayed in “Twitter style”, e.g. “12 minutes ago”</li>
+  <li>You can customize the HTML that wraps your tweets, tweet status and meta information</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<p>To interact with Twitter’s API you will need an API KEY, which you can create at: https://dev.twitter.com/apps</p>
+
+<p>After creating your API Key you will need to take note of following values: “Consumer key”, “Consumer secret”, “Access token”, “Access token secret”</p>
+
+<p>Those values can be passed as options to the class constructor, along with the Twitter screen name you wish to query:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$TweetPHP = new TweetPHP(array(
+  'consumer_key'              =&gt; 'xxxxxxxxxxxxxxxxxxxxx',
+  'consumer_secret'           =&gt; 'xxxxxxxxxxxxxxxxxxxxx',
+  'access_token'              =&gt; 'xxxxxxxxxxxxxxxxxxxxx',
+  'access_token_secret'       =&gt; 'xxxxxxxxxxxxxxxxxxxxx',
+  'twitter_screen_name'       =&gt; 'yourusername'
+));
+</code></pre></div></div>
+
+<p>Then you can display the results like so:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo $TweetPHP-&gt;get_tweet_list();
+</code></pre></div></div>
+
+<p>You can also retreive the raw data received from Twitter:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$tweet_array = $TweetPHP-&gt;get_tweet_array();
+</code></pre></div></div>
+
+<h2 id="options">Options</h2>
+
+<p>Options can be overridden by passing an array of key/value pairs to the class constructor. At a minimum you must set the <code class="highlighter-rouge">consumer_key</code>, <code class="highlighter-rouge">consumer_secret</code>, <code class="highlighter-rouge">access_token</code>, <code class="highlighter-rouge">access_token_secret</code> and <code class="highlighter-rouge">twitter_screen_name</code> options, as shown above.</p>
+
+<p>Here is a full list of options, and their default values:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'consumer_key'          =&gt; '',
+'consumer_secret'       =&gt; '',
+'access_token'          =&gt; '',
+'access_token_secret'   =&gt; '',
+'twitter_screen_name'   =&gt; '',
+'cache_file'            =&gt; dirname(__FILE__) . '/cache/twitter.txt', // Where on the server to save the cached formatted tweets
+'cache_file_raw'        =&gt; dirname(__FILE__) . '/cache/twitter-array.txt', // Where on the server to save the cached raw tweets
+'cachetime'             =&gt; 60 * 60, // Seconds to cache feed (1 hour).
+'tweets_to_display'     =&gt; 10, // How many tweets to fetch
+'ignore_replies'        =&gt; true, // Ignore @replies
+'ignore_retweets'       =&gt; true, // Ignore retweets
+'twitter_style_dates'   =&gt; false, // Use twitter style dates e.g. 2 hours ago
+'twitter_date_text'     =&gt; array('seconds', 'minutes', 'about', 'hour', 'ago'),
+'date_format'           =&gt; '%I:%M %p %b %d%O', // The defult date format e.g. 12:08 PM Jun 12th. See: http://php.net/manual/en/function.strftime.php
+'date_lang'             =&gt; null, // Language for date e.g. 'fr_FR'. See: http://php.net/manual/en/function.setlocale.php
+'format'                =&gt; 'html', // Can be 'html' or 'array'
+'twitter_wrap_open'     =&gt; '&lt;h2&gt;Latest tweets&lt;/h2&gt;&lt;ul id="twitter"&gt;',
+'twitter_wrap_close'    =&gt; '&lt;/ul&gt;',
+'tweet_wrap_open'       =&gt; '&lt;li&gt;&lt;span class="status"&gt;',
+'meta_wrap_open'        =&gt; '&lt;/span&gt;&lt;span class="meta"&gt; ',
+'meta_wrap_close'       =&gt; '&lt;/span&gt;',
+'tweet_wrap_close'      =&gt; '&lt;/li&gt;',
+'error_message'         =&gt; 'Oops, our twitter feed is unavailable right now.',
+'error_link_text'       =&gt; 'Follow us on Twitter',
+'debug'                 =&gt; false
+</code></pre></div></div>
+
+<h2 id="caching">Caching</h2>
+
+<p>Caching is employed because Twitter rate limits how many times their feeds can be accessed per hour.</p>
+
+<p>When the user timeline is first loaded, the resultant HTML list is saved as a text file on your web server. The default location for this file is: <code class="highlighter-rouge">cache/twitter.txt</code></p>
+
+<p>The raw Twitter response is saved as a serialized array in: <code class="highlighter-rouge">cache/twitter-array.txt</code></p>
+
+<p>You can change these file paths using the <code class="highlighter-rouge">cache_file</code> and <code class="highlighter-rouge">cache_file_raw</code> options. For example, to set a path from your root public directory try:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$_SERVER['DOCUMENT_ROOT'] . '/path/to/my/cache/dir/filename.txt'
+</code></pre></div></div>
+
+<h2 id="debugging">Debugging</h2>
+
+<p>If you are experiencing problems using the plugin please set the <code class="highlighter-rouge">debug</code> option to <code class="highlighter-rouge">true</code>. This will set PHP’s error reporting level to <code class="highlighter-rouge">E_ALL</code>, and will also display a debugging report.</p>
+
+<p>You can also fetch the debugging report as an array or HTML list, even when the <code class="highlighter-rouge">debug</code> option is set to <code class="highlighter-rouge">false</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo $TweetPHP-&gt;get_debug_list();
+$debug_array = $TweetPHP-&gt;get_debug_array();
+</code></pre></div></div>
+
+<h2 id="helper-methods">Helper methods</h2>
+
+<h3 id="autolink">autolink</h3>
+
+<p>Pass raw tweet text to <code class="highlighter-rouge">autolink()</code> and  it will convert all usernames, hashtags and URLs to HTML links.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$autolinked_tweet = autolink($tweet);
+</code></pre></div></div>
+
+<p>This might be handy if you want to process tweets yourself, using the array returned by <code class="highlighter-rouge">get_tweet_array()</code>.</p>
+
+<h2 id="credits">Credits</h2>
+
+<ul>
+  <li>Feed parsing uses Matt Harris’ <a href="https://github.com/themattharris/tmhOAuth">tmhOAuth</a></li>
+  <li>Hashtag/username parsing uses Mike Cochrane’s <a href="https://github.com/mikenz/twitter-text-php">twitter-text-php</a></li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

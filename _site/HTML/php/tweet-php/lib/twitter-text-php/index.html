@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Twitter Text (PHP Edition) # | logmancuso.github.io</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Twitter Text (PHP Edition) #" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/HTML/php/tweet-php/lib/twitter-text-php/" />
+<meta property="og:url" content="http://localhost:4000/HTML/php/tweet-php/lib/twitter-text-php/" />
+<meta property="og:site_name" content="logmancuso.github.io" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/HTML/php/tweet-php/lib/twitter-text-php/","headline":"Twitter Text (PHP Edition) #","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4aefe5d3cdd73f75370bddf8afaa5ce4b4744d63">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">logmancuso.github.io</a></h1>
+      
+
+      <h1 id="twitter-text-php-edition">Twitter Text (PHP Edition)</h1>
+
+<p>A library of PHP classes that provide auto-linking and extraction of usernames,
+lists, hashtags and URLs from tweets.  Originally created from twitter-text-rb
+and twitter-text-java projects by Matt Sanford and ported to PHP by Mike
+Cochrane, this library has been improved and made more complete by Nick Pope.</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="autolink">Autolink</h3>
+
+<ul>
+  <li>Add links to all matching Twitter usernames (no account verification).</li>
+  <li>Add links to all user lists (of the form @username/list-name).</li>
+  <li>Add links to all valid hashtags.</li>
+  <li>Add links to all URLs.</li>
+  <li>Support for international character sets.</li>
+</ul>
+
+<h3 id="extractor">Extractor</h3>
+
+<ul>
+  <li>Extract mentioned Twitter usernames (from anywhere in the tweet).</li>
+  <li>Extract replied to Twitter usernames (from start of the tweet).</li>
+  <li>Extract all user lists (of the form @username/list-name).</li>
+  <li>Extract all valid hashtags.</li>
+  <li>Extract all URLs.</li>
+  <li>Support for international character sets.</li>
+</ul>
+
+<h3 id="hit-highlighter">Hit Highlighter</h3>
+
+<ul>
+  <li>Highlight text specifed by a range by surrounding with a tag.</li>
+  <li>Support for highlighting when tweet has already been autolinked.</li>
+  <li>Support for international character sets.</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<p>For examples, please see <code class="highlighter-rouge">tests/example.php</code> which you can view in a browser or
+run from the command line.</p>
+
+<h2 id="conformance">Conformance</h2>
+
+<p>You’ll need the test data which is in YAML format from the following
+repository:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://github.com/mzsanford/twitter-text-conformance
+</code></pre></div></div>
+
+<p>It has already been added as a git submodule so you should just need to run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule init
+git submodule update
+</code></pre></div></div>
+
+<p>As PHP has no native support for YAML you’ll need to checkout spyc from svn
+into <code class="highlighter-rouge">tests/spyc</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>svn checkout http://spyc.googlecode.com/svn/trunk/ tests/spyc
+</code></pre></div></div>
+
+<p>There are a couple of options for testing conformance:</p>
+
+<ol>
+  <li>Run <code class="highlighter-rouge">phpunit</code> in from the root folder of the project.</li>
+  <li>Run <code class="highlighter-rouge">tests/runtests.php</code> from the command line.</li>
+  <li>Make <code class="highlighter-rouge">tests/runtests.php</code> accessible on a web server and view it in your
+browser.</li>
+</ol>
+
+<h2 id="thanks--contributions">Thanks &amp; Contributions</h2>
+
+<p>The bulk of this library is from the heroic efforts of:</p>
+
+<ul>
+  <li>Matt Sanford (https://github.com/mzsanford): For the orignal Ruby and Java implementions.</li>
+  <li>Mike Cochrane (https://github.com/mikenz): For the initial PHP code.</li>
+  <li>Nick Pope (https://github.com/ngnpope): For the bulk of the maintenance work to date.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

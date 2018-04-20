@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>logmancuso.github.io</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="logmancuso.github.io" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/HTML/php/php-mailer/extras/" />
+<meta property="og:url" content="http://localhost:4000/HTML/php/php-mailer/extras/" />
+<meta property="og:site_name" content="logmancuso.github.io" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/HTML/php/php-mailer/extras/","headline":"logmancuso.github.io","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4aefe5d3cdd73f75370bddf8afaa5ce4b4744d63">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">logmancuso.github.io</a></h1>
+      
+
+      <p>#PHPMailer Extras</p>
+
+<p>These classes provide optional additional functions to PHPMailer.</p>
+
+<p>These are not loaded by the PHPMailer autoloader, so in some cases you may need to <code class="highlighter-rouge">require</code> them yourself before using them.</p>
+
+<p>##EasyPeasyICS</p>
+
+<p>This class was originally written by Manuel Reinhard and provides a simple means of generating ICS/vCal files that are used in sending calendar events. PHPMailer does not use it directly, but you can use it to generate content appropriate for placing in the <code class="highlighter-rouge">Ical</code> property of PHPMailer. The PHPMailer project is now its official home as Manuel has given permission for that and is no longer maintaining it himself.</p>
+
+<p>##htmlfilter</p>
+
+<p>This class by Konstantin Riabitsev and Jim Jagielski implements HTML filtering to remove potentially malicious tags, such as <code class="highlighter-rouge">&lt;script&gt;</code> or <code class="highlighter-rouge">onclick=</code> attributes that can result in XSS attacks. This is a simple filter and is not as comprehensive as <a href="http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed/">HTMLawed</a> or <a href="http://htmlpurifier.org">HTMLPurifier</a>, but it’s easier to use and considerably better than nothing! PHPMailer does not use it directly, but you may want to apply it to user-supplied HTML before using it as a message body.</p>
+
+<p>##NTLM_SASL_client</p>
+
+<p>This class by Manuel Lemos (bundled with permission) adds the ability to authenticate with Microsoft Windows mail servers that use NTLM-based authentication. It is used by PHPMailer if you send via SMTP and set the <code class="highlighter-rouge">AuthType</code> property to <code class="highlighter-rouge">NTLM</code>; you will also need to use the <code class="highlighter-rouge">Realm</code> and <code class="highlighter-rouge">Workstation</code> properties. The original source is <a href="http://www.phpclasses.org/browse/file/7495.html">here</a>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
