@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>tmhOAuth | logmancuso.github.io</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="tmhOAuth" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/HTML/php/tweet-php/lib/tmhOAuth/" />
+<meta property="og:url" content="http://localhost:4000/HTML/php/tweet-php/lib/tmhOAuth/" />
+<meta property="og:site_name" content="logmancuso.github.io" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/HTML/php/tweet-php/lib/tmhOAuth/","headline":"tmhOAuth","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4aefe5d3cdd73f75370bddf8afaa5ce4b4744d63">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">logmancuso.github.io</a></h1>
+      
+
+      <h1 id="tmhoauth">tmhOAuth</h1>
+
+<p>An OAuth library written in PHP by @themattharris.</p>
+
+<p><strong>Disclaimer</strong>: This project is a work in progress. Please use the issue tracker
+to report any enhancements or issues you encounter.</p>
+
+<h2 id="goals">Goals</h2>
+
+<ul>
+  <li>Support OAuth 1.0A</li>
+  <li>Use Authorisation headers instead of query string or POST parameters</li>
+  <li>Allow uploading of images</li>
+  <li>Provide enough information to assist with debugging</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>The library has been tested with PHP 5.3+ and relies on CURL and hash_hmac. The
+vast majority of hosting providers include these libraries and run with PHP 5.1+.</p>
+
+<p>The code makes use of hash_hmac, which was introduced in PHP 5.1.2. If your version
+of PHP is lower than this you should ask your hosting provider for an update.</p>
+
+<h2 id="a-note-about-security-and-ssl">A note about security and SSL</h2>
+
+<p>Version 0.60 hardened the security of the library and defaulted <code class="highlighter-rouge">curl_ssl_verifypeer</code> to <code class="highlighter-rouge">true</code>.
+As some hosting providers do not provide the most current certificate root file
+it is now included in this repository. If the version is out of date OR you prefer
+to download the certificate roots yourself, you can get them
+from: http://curl.haxx.se/ca/cacert.pem</p>
+
+<p>If you are getting http code 0 responses inspect <code class="highlighter-rouge">$tmhOAuth-&gt;response['error']</code> to see what the
+problem is. usually code 0 means cacert.pem cannot be found, and it can be fixed by putting cacert.pem
+in the location tmhOAuth is looking for it (indicated in the <code class="highlighter-rouge">$tmhOAuth-&gt;response['error']</code> message), or
+by setting <code class="highlighter-rouge">$tmhOAuth-&gt;config['curl_cainfo']</code> and <code class="highlighter-rouge">$tmhOAuth-&gt;config['curl_capath']</code> values. setting
+<code class="highlighter-rouge">$tmhOAuth-&gt;config['use_ssl']</code> to false <em>IS NOT</em> the way to solve this problem.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>This will be built out later but for the moment review the examples repository
+<a href="https://github.com/themattharris/tmhOAuthExamples">https://github.com/themattharris/tmhOAuthExamples</a> for ways the library can be
+used. Each example contains instructions on how to use it.</p>
+
+<p>For guidance on how to use <a href="http://getcomposer.org">composer</a> to install tmhOAuth see the
+<a href="https://github.com/themattharris/tmhOAuthExamples">tmhOAuthExamples</a> project.</p>
+
+<h2 id="notes-for-users-of-previous-versions">Notes for users of previous versions</h2>
+
+<p>As of version 0.8.0 tmhUtilities is no longer included. If you found them useful open an issue against me
+and i’ll create a new repository for them. version 0.8.0 also ignores <code class="highlighter-rouge">$tmhOAuth-&gt;config['v']</code>. if you used
+this before you should instead specify the API version in the path you pass to <code class="highlighter-rouge">$tmhOAuth-&gt;url</code></p>
+
+<p>Versions prior to 0.7.3 collapsed headers with the same value into one
+<code class="highlighter-rouge">$tmhOAuth-&gt;response['headers']</code> key. Since 0.7.3 headers with the same key will use an array
+to store their values.</p>
+
+<p>If you previously used version 0.4 be aware the utility functions
+have now been broken into their own file. Before you use version 0.5+ in your app
+test locally to ensure your code doesn’t need tmhUtilities included.</p>
+
+<p>If you used custom HTTP request headers when they were defined as <code class="highlighter-rouge">'key: value'</code> strings
+you should now define them as <code class="highlighter-rouge">'key' =&gt; 'value'</code> pairs.</p>
+
+<h2 id="change-history">Change History</h2>
+
+<p>This is now published on the tmhOAuth wiki <a href="https://github.com/themattharris/tmhOAuth/wiki/Change-History">https://github.com/themattharris/tmhOAuth/wiki/Change-History</a></p>
+
+<h2 id="community">Community</h2>
+
+<p>License: Apache 2 (see <a href="https://github.com/themattharris/tmhOAuth/blob/master/LICENSE">included LICENSE file</a>)</p>
+
+<p>Follow <a href="https://twitter.com/intent/follow?screen_name=tmhOAuth">@tmhOAuth</a> to receive updates on releases, or ask for support
+Follow me on Twitter: <a href="https://twitter.com/intent/follow?screen_name=themattharris">@themattharris</a>
+Check out the Twitter Developer Resources: <a href="https://dev.twitter.com">https://dev.twitter.com</a></p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
