@@ -1,1 +1,26 @@
-/* Add here all your CSS customizations */
+/*
+* Any CSS in that we would want to overide
+* We do here
+*
+* This is the Custom Stylesheet
+*/
+
+/*
+* This is the top header. Background color, Border. etc.
+*/
+html #header.header-transparent-bottom-border .header-body {
+    border-bottom: 1.5px ridge rgba(255, 255, 255, 255);
+    background:rgba(192,192,192 ,.9 );
+    opacity:.7;
+    z-index: 9999;
+}
+/*
+* This is the styling for the main heading on the homepage banner
+*/
+.slider-container .main-label {
+	color: #FFF;
+	font-size: 32px;
+	line-height: 62px;
+	font-weight: 500;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
